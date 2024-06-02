@@ -12,7 +12,7 @@ class CarsSpider(CrawlSpider):
     rules = (
         Rule(
             LinkExtractor(
-                restrict_xpaths='//section[@id="home-categories"]'
+                restrict_xpaths='//section[@id="home-categories"]/ul/li[position()<2]'
             ),
             callback='parse',
             follow=True
