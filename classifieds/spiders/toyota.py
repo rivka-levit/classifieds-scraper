@@ -1,24 +1,14 @@
+import scrapy
+
 from scrapy.loader import ItemLoader
-from scrapy.spiders import CrawlSpider, Rule
-from scrapy.linkextractors import LinkExtractor
 
 from classifieds.items import ClassifiedsItem
 
 
-class CarsSpider(CrawlSpider):
-    name = "cars"
+class ToyotaSpider(scrapy.Spider):
+    name = "toyota"
     allowed_domains = ["www.classifieds.co.zw"]
     start_urls = ["https://www.classifieds.co.zw/zimbabwe-cars-vehicles/Toyota"]
-    # rules = (
-    #     Rule(
-    #         LinkExtractor(
-    #             restrict_xpaths='//div[@class="listings"]'
-    #
-    #         ),
-    #         callback='parse',
-    #         follow=False
-    #     ),
-    # )
 
     def parse(self, response, **kwargs):
         gallery = response.xpath('//div[contains(@id, "listing-")]')
@@ -51,3 +41,13 @@ class CarsSpider(CrawlSpider):
             )
 
             yield item.load_item()
+
+        next_page = response.xpath(
+            '//div[@class="footer-nav"]/ul[@class="pagination"]'
+            '/li[contains(@class, "active")]/following-sibling::li/a/text()'
+        ).get()
+
+        if next_page:
+            url = f'https://www.classifieds.co.zw/zimbabwe-cars-vehicles/Toyota?page={next_page}'
+
+            yield response.follow(url, callback=self.parse)
