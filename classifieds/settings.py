@@ -65,7 +65,8 @@ DEFAULT_REQUEST_HEADERS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   "classifieds.pipelines.ClassifiedsRemoveDuplicatesPipeline": 300,
+    "classifieds.pipelines.ClassifiedsRemoveDuplicatesPipeline": 1,
+    "classifieds.pipelines.ClassifiedsRemoveNoPricePipeline": 2,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

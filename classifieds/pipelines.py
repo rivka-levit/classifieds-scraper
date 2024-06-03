@@ -22,3 +22,12 @@ class ClassifiedsRemoveDuplicatesPipeline:
 
         self.title_descr.add((item["title"], item["description"]))
         return item
+
+
+class ClassifiedsRemoveNoPricePipeline:
+    def process_item(self, item, spider):  # noqa
+        adapter = ItemAdapter(item)
+        if not adapter.get('price'):
+            raise DropItem(f'Price is missing: {item}')
+
+        return item
