@@ -11,7 +11,7 @@ class ToyotaSpider(scrapy.Spider):
     start_urls = ["https://www.classifieds.co.zw/zimbabwe-cars-vehicles/Toyota"]
 
     def parse(self, response, **kwargs):
-        gallery = response.xpath('//div[contains(@id, "listing-")]')
+        gallery = response.xpath('//div[contains(@id, "listing-")]')  # noqa
 
         for listing in gallery:
 

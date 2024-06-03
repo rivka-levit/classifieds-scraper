@@ -20,7 +20,7 @@ class CarsSpider(CrawlSpider):
     )
 
     def parse(self, response, **kwargs):
-        gallery = response.xpath('//div[contains(@id, "listing-")]')
+        gallery = response.xpath('//div[contains(@id, "listing-")]')  # noqa
 
         for listing in gallery:
 
