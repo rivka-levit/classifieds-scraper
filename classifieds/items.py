@@ -4,11 +4,31 @@ from itemloaders.processors import MapCompose, Join
 
 
 def clean(s):
-    return s[0].strip().replace('\t', '').replace('\n', '').replace(u'\xa0', u' ').strip('\t')
+    """
+    Clean data. Get rid of spaces, tabs, end lines. Flatten list to a string.
+
+    Args:
+        s (list): list with one string value received from item loader
+
+    Returns:
+        str: cleaned string
+    """
+
+    return s[0].strip().replace('\t', '').replace('\n', '').replace(u'\xa0', u' ')
 
 
 def clean_prop(s):
-    return s.strip().replace('\t', '').replace('\n', '').replace(u'\xa0', u' ').strip('\t')
+    """
+    Clean data. Get rid of spaces, tabs, end lines.
+
+    Args:
+        s (str): value received from item loader
+
+    Returns:
+        str: cleaned string
+    """
+
+    return s.strip().replace('\t', '').replace('\n', '').replace(u'\xa0', u' ')
 
 
 class ClassifiedsItem(scrapy.Item):
