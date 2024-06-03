@@ -1,16 +1,15 @@
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+"""
+Pipelines for processing items.
+"""
 
-
-# useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 
 from scrapy.exceptions import DropItem
 
 
 class ClassifiedsRemoveDuplicatesPipeline:
+    """Remove duplicate items with repeated title and description."""
+
     def __init__(self):
         self.title_descr = set()
 
@@ -25,6 +24,8 @@ class ClassifiedsRemoveDuplicatesPipeline:
 
 
 class ClassifiedsRemoveNoPricePipeline:
+    """Remove items that don't have a price."""
+
     def process_item(self, item, spider):  # noqa
         adapter = ItemAdapter(item)
         if not adapter.get('price'):
