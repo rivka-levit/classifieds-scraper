@@ -7,6 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import os
+
+from dotenv import load_dotenv
+
 BOT_NAME = "classifieds"
 
 SPIDER_MODULES = ["classifieds.spiders"]
@@ -94,3 +98,9 @@ ITEM_PIPELINES = {
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+MYSQL_HOST = os.environ.get('DB_HOST')
+MYSQL_PORT = os.environ.get('DB_PORT')
+MYSQL_USER = os.environ.get('DB_USER')
+MYSQL_PASSWORD = os.environ.get('DB_PASS')
+MYSQL_DATABASE = os.environ.get('DB_NAME')

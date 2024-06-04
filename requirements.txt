@@ -1,0 +1,4 @@
+python-dotenv>=1.0.1,<1.1
+Scrapy>=2.11.2,<2.12
+mysql>=0.0.3,<0.0.4
+mysql-connector-python>=8.4,<8.5
