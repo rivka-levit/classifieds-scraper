@@ -11,6 +11,8 @@ import os
 
 from dotenv import load_dotenv
 
+load_dotenv()
+
 BOT_NAME = "classifieds"
 
 SPIDER_MODULES = ["classifieds.spiders"]
@@ -71,6 +73,7 @@ DEFAULT_REQUEST_HEADERS = {
 ITEM_PIPELINES = {
     "classifieds.pipelines.ClassifiedsRemoveDuplicatesPipeline": 1,
     "classifieds.pipelines.ClassifiedsRemoveNoPricePipeline": 2,
+    "classifieds.pipelines.MySQLPipeline": 3,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
