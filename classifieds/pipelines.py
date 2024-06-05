@@ -66,7 +66,7 @@ class MySQLPipeline:
             f"""CREATE TABLE IF NOT EXISTS {self.database}.classifieds (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 title TEXT,
-                price VARCHAR(15),
+                price FLOAT,
                 properties TEXT,
                 description TEXT
             )"""
