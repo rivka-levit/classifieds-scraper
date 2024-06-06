@@ -36,7 +36,7 @@ class CarsSpider(CrawlSpider):
             )
             item.add_xpath(
                 'price',
-                '//div[contains(@class, "price")]/div[@class="amount"]'
+                './/div[contains(@class, "price")]/div[@class="amount"]'
                 '/div[contains(@class, "usd-price-tooltip")]/text()'
             )
             item.add_xpath(
